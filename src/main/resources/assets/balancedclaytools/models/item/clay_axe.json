@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "balancedclaytools:item/clay_axe"
+    "layer0": "balancedclaytools:items/clay_axe"
   }
 }

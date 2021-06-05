@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "balancedclaytools:item/clay_shovel"
+    "layer0": "balancedclaytools:items/clay_shovel"
   }
 }

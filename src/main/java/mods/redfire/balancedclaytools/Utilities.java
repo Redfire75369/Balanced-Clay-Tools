@@ -1,7 +1,18 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package mods.redfire.balancedclaytools;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,5 +40,15 @@ public class Utilities {
 			player.getCommandSenderWorld().playSound(player, entity.position().x, entity.position().y, entity.position().z, SoundEvents.CREEPER_PRIMED, SoundCategory.HOSTILE, 1.0F, 0.5F);
 		}
 		return true;
+	}
+
+	public static Multimap<Attribute, AttributeModifier> filterMultimap(Multimap<Attribute, AttributeModifier> map) {
+		Multimap<Attribute, AttributeModifier> multimap = ArrayListMultimap.create();
+		map.forEach((attribute, modifier) -> {
+			if (attribute != Attributes.ATTACK_DAMAGE && attribute != Attributes.ATTACK_SPEED) {
+				multimap.put(attribute, modifier);
+			}
+		});
+		return multimap;
 	}
 }

@@ -1,6 +1,11 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 package mods.redfire.balancedclaytools.tools;
 
-import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import mods.redfire.balancedclaytools.BalancedClayTools;
 import mods.redfire.balancedclaytools.Utilities;
@@ -11,7 +16,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
@@ -26,9 +30,12 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static mods.redfire.balancedclaytools.Utilities.filterMultimap;
+import static net.minecraft.item.ItemTier.DIAMOND;
+
 public class ClayPickaxe extends PickaxeItem {
 	public ClayPickaxe() {
-		super(ItemTier.DIAMOND, 0, 0.0F, new Properties().durability(0).tab(BalancedClayTools.TAB_CLAY_TOOLS));
+		super(DIAMOND, 0, 0.0F, new Properties().durability(0).tab(BalancedClayTools.TAB_CLAY_TOOLS));
 	}
 
 	@Override
@@ -80,15 +87,7 @@ public class ClayPickaxe extends PickaxeItem {
 	@Nonnull
 	@Override
 	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nonnull EquipmentSlotType equipmentSlot) {
-		Multimap<Attribute, AttributeModifier> defaultMap = super.getDefaultAttributeModifiers(equipmentSlot);
-		Multimap<Attribute, AttributeModifier> multimap = ArrayListMultimap.create();
-
-		defaultMap.forEach((attribute, modifier) -> {
-			if (attribute != Attributes.ATTACK_DAMAGE && attribute != Attributes.ATTACK_SPEED) {
-				multimap.put(attribute, modifier);
-			}
-		});
-		return multimap;
+		return filterMultimap(super.getDefaultAttributeModifiers(equipmentSlot));
 	}
 
 	@Override
