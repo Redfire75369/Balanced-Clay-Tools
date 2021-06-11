@@ -11,7 +11,7 @@ displayName = "Balanced Clay Tools"
 updateJSONURL = ""
 displayURL = "https://github.com/Redfire75369/Balanced-Clay-Tools"
 authors = "Redfire"
-logoFile = ""
+logoFile = "logo.png"
 description = '''Balanced Clay Tools'''
 
 [[dependencies.balancedclaytools]]
