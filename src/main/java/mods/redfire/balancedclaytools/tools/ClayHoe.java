@@ -7,7 +7,6 @@
 package mods.redfire.balancedclaytools.tools;
 
 import com.google.common.collect.Multimap;
-import mods.redfire.balancedclaytools.BalancedClayTools;
 import mods.redfire.balancedclaytools.Utilities;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -27,6 +26,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
@@ -34,12 +34,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static mods.redfire.balancedclaytools.BalancedClayTools.TAB_CLAY_TOOLS;
 import static mods.redfire.balancedclaytools.Utilities.filterMultimap;
 import static net.minecraft.item.ItemTier.DIAMOND;
 
 public class ClayHoe extends HoeItem {
 	public ClayHoe() {
-		super(DIAMOND, 0, 0.0F, new Properties().durability(0).tab(BalancedClayTools.TAB_CLAY_TOOLS));
+		super(DIAMOND, 0, 0.0F, new Properties().durability(0).tab(TAB_CLAY_TOOLS));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -113,12 +114,12 @@ public class ClayHoe extends HoeItem {
 
 	@Nonnull
 	@Override
-	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nonnull EquipmentSlotType equipmentSlot) {
-		return filterMultimap(super.getDefaultAttributeModifiers(equipmentSlot));
+	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nonnull EquipmentSlotType slot) {
+		return filterMultimap(super.getDefaultAttributeModifiers(slot));
 	}
 
 	@Override
 	public void appendHoverText(@Nonnull ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, @Nonnull ITooltipFlag flag) {
-		tooltip.add(new TranslationTextComponent("item.balancedclaytools.clay_tool.tooltip"));
+		tooltip.add(new TranslationTextComponent("item.balancedclaytools.clay_tool.tooltip").withStyle(TextFormatting.DARK_GRAY));
 	}
 }

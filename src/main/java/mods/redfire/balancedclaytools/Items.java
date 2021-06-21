@@ -21,6 +21,7 @@ public class Items {
 	public static final RegistryObject<Item> CLAY_AXE = ITEMS.register("clay_axe", ClayAxe::new);
 	public static final RegistryObject<Item> CLAY_HOE = ITEMS.register("clay_hoe", ClayHoe::new);
 	public static final RegistryObject<Item> CLAY_PICKAXE = ITEMS.register("clay_pickaxe", ClayPickaxe::new);
+	public static final RegistryObject<Item> CLAY_SHEARS = ITEMS.register("clay_shears", ClayShears::new);
 	public static final RegistryObject<Item> CLAY_SHOVEL = ITEMS.register("clay_shovel", ClayShovel::new);
 	public static final RegistryObject<Item> CLAY_SWORD = ITEMS.register("clay_sword", ClaySword::new);
 

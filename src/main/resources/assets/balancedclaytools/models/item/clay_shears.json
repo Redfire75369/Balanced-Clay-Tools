@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "balancedclaytools:items/clay_shears"
+  }
+}

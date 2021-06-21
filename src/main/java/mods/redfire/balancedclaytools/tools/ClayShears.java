@@ -18,7 +18,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ShearsItem;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -31,11 +31,10 @@ import java.util.List;
 
 import static mods.redfire.balancedclaytools.BalancedClayTools.TAB_CLAY_TOOLS;
 import static mods.redfire.balancedclaytools.Utilities.filterMultimap;
-import static net.minecraft.item.ItemTier.DIAMOND;
 
-public class ClayPickaxe extends PickaxeItem {
-	public ClayPickaxe() {
-		super(DIAMOND, 0, 0.0F, new Properties().durability(0).tab(TAB_CLAY_TOOLS));
+public class ClayShears extends ShearsItem {
+	public ClayShears() {
+		super(new Properties().durability(0).tab(TAB_CLAY_TOOLS));
 	}
 
 	@Override
@@ -84,6 +83,13 @@ public class ClayPickaxe extends PickaxeItem {
 		return false;
 	}
 
+	@Nonnull
+	@Override
+	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType slot, ItemStack stack) {
+		return filterMultimap(super.getAttributeModifiers(slot, stack));
+	}
+
+	@SuppressWarnings("deprecation")
 	@Nonnull
 	@Override
 	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nonnull EquipmentSlotType slot) {

@@ -7,7 +7,6 @@
 package mods.redfire.balancedclaytools.tools;
 
 import com.google.common.collect.Multimap;
-import mods.redfire.balancedclaytools.BalancedClayTools;
 import mods.redfire.balancedclaytools.Utilities;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -19,7 +18,6 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTier;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -30,12 +28,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static mods.redfire.balancedclaytools.BalancedClayTools.TAB_CLAY_TOOLS;
 import static mods.redfire.balancedclaytools.Utilities.filterMultimap;
 import static net.minecraft.item.ItemTier.DIAMOND;
 
 public class ClayShovel extends ShovelItem {
 	public ClayShovel() {
-		super(DIAMOND, 0, 0.0F, new Properties().durability(0).tab(BalancedClayTools.TAB_CLAY_TOOLS));
+		super(DIAMOND, 0, 0.0F, new Properties().durability(0).tab(TAB_CLAY_TOOLS));
 	}
 
 	@Override
@@ -86,8 +85,8 @@ public class ClayShovel extends ShovelItem {
 
 	@Nonnull
 	@Override
-	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nonnull EquipmentSlotType equipmentSlot) {
-		return filterMultimap(super.getDefaultAttributeModifiers(equipmentSlot));
+	public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nonnull EquipmentSlotType slot) {
+		return filterMultimap(super.getDefaultAttributeModifiers(slot));
 	}
 
 	@Override

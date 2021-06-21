@@ -12,7 +12,7 @@ updateJSONURL = ""
 displayURL = "https://github.com/Redfire75369/Balanced-Clay-Tools"
 authors = "Redfire"
 logoFile = "logo.png"
-description = '''Balanced Clay Tools'''
+description = '''But do they take effort?'''
 
 [[dependencies.balancedclaytools]]
 modId = "forge"
